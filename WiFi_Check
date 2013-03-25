@@ -38,6 +38,8 @@ lockfile="/var/run/$(basename $0).pid"
 # Which Interface do you want to check/fix
 wlan='wlan0'
 pingip='192.168.1.1'
+# Set LANG to C in order to get right parse when using other LANG
+LANG=C
 ##################################################################
 
 echo
