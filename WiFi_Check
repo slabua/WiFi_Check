@@ -52,10 +52,6 @@ flock -n 200 || exit 1
 pid=$$
 echo $pid 1>&200
 
-# If we get here, set a lock file using our current PID#
-#echo "Setting Lockfile"
-echo $$ > $lockfile
-
 # We can perform check
 echo "Performing Network check for $wlan"
 /bin/ping -c 2 -I $wlan $pingip > /dev/null 2> /dev/null
