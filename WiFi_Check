@@ -43,20 +43,15 @@ echo "Starting WiFi check for $wlan"
 date
 echo
 
-# Check to see if there is a lock file
-if [ -e $lockfile ]; then
-    # A lockfile exists... Lets check to see if it is still valid
-    pid=`cat $lockfile`
-    if kill -0 &>1 > /dev/null $pid; then
-        # Still Valid... lets let it be...
-        #echo "Process still running, Lockfile valid"
-        exit 1
-    else
-        # Old Lockfile, Remove it
-        #echo "Old lockfile, Removing Lockfile"
-        rm $lockfile
-    fi
-fi
+#Use flock to make sure we're not already running
+#http://tobrunet.ch/2013/01/follow-up-bash-script-locking-with-flock/
+set -e
+# lock it
+exec 200>$lockfile
+flock -n 200 || exit 1
+pid=$$
+echo $pid 1>&200
+
 # If we get here, set a lock file using our current PID#
 #echo "Setting Lockfile"
 echo $$ > $lockfile
