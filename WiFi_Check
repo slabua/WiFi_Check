@@ -71,7 +71,7 @@ echo
 
 # Check is complete, Remove Lock file and exit
 #echo "process is complete, removing lockfile"
-rm $lockfile
+#rm $lockfile #Do I need this with flock?
 exit 0
 
 ##################################################################
