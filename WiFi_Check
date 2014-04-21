@@ -46,6 +46,7 @@ echo
 echo "Starting WiFi check for $wlan"
 date
 echo
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Use flock to make sure we're not already running
 # http://tobrunet.ch/2013/01/follow-up-bash-script-locking-with-flock/
