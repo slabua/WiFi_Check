@@ -39,13 +39,15 @@ lockfile="/var/run/$(basename $0).pid"
 wlan='wlan0'
 pingip='192.168.1.1'
 ##################################################################
+
 echo
 echo "Starting WiFi check for $wlan"
 date
 echo
 
-#Use flock to make sure we're not already running
-#http://tobrunet.ch/2013/01/follow-up-bash-script-locking-with-flock/
+# Use flock to make sure we're not already running
+# http://tobrunet.ch/2013/01/follow-up-bash-script-locking-with-flock/
+# stop on errors
 set -e
 # lock it
 exec 200>$lockfile
@@ -71,7 +73,7 @@ echo "Current Setting:"
 echo
 
 # Check is complete, Remove Lock file and exit
-#echo "process is complete, removing lockfile"
+#echo "Process is complete, removing lockfile"
 #rm $lockfile #Do I need this with flock?
 exit 0
 
