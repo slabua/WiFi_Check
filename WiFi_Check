@@ -32,8 +32,9 @@
 #
 ##################################################################
 # Settings
-# Where and what you want to call the Lockfile
-lockfile='/var/run/WiFi_Check.pid'
+# Where you want to put the Lockfile at
+# Its name will be automatically set after the script name itself
+lockfile="/var/run/$(basename $0).pid"
 # Which Interface do you want to check/fix
 wlan='wlan0'
 pingip='192.168.1.1'
